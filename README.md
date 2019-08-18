@@ -4,7 +4,7 @@ A userscript for downloading Flickr photos.
 ## Usage
 Click the **Download** buttons to instantly trigger single image downloads.
 
-### Enhanced to support batch downloads!
+#### Enhanced to support batch downloads!
 You can now use the **Download All** button on most pages to setup a batch download of all loaded images.
 
 Clicking it will *NOT* immediately start downloads; instead, the direct links get resolved and get added to the page as *hidden data*.
