@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        	Flickr Downloader Enhanced
 // @namespace   	https://github.com/Hekkun/flickr-dl.userscript
-// @version     	0.3.0
+// @version     	0.3.1
 // @description 	A userscript for downloading Flickr photos.
 // @author      	f2face, Hekkun
 // @match       	https://www.flickr.com/*
