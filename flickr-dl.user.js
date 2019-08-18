@@ -34,7 +34,7 @@
 	document.body.addEventListener("newAjaxStart", receiveAjaxMessage);
 
 	function receiveAjaxMessage(zEvent) {
-		console.log("Intercepted AJAX to: ", zEvent.detail);
+		// console.log("Intercepted AJAX to: ", zEvent.detail);
 	}
 
 	function addJS_Node(text, s_URL, funcToRun, runOnLoad) {
