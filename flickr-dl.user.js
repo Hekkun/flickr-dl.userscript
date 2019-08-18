@@ -15,6 +15,7 @@
 (function() {
     'use strict';
 
+    // Reference: https://stackoverflow.com/questions/40623574/why-does-changing-grant-from-none-to-gm-xmlhttprequest-break-my-code
     function xmlOpenIntercept () {
         var proxied = window.XMLHttpRequest.prototype.open;
         window.XMLHttpRequest.prototype.open = function (method, newUrl) {
