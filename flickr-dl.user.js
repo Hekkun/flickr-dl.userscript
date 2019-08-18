@@ -123,6 +123,7 @@
         return dlbar;
     }
 
+    // Reference: https://stackoverflow.com/questions/25778469/how-to-access-window-target-page-objects-when-grant-values-are-set
     function getApiSiteKey() {
         return unsafeWindow.YUI_config.flickr.api.site_key;
     }
