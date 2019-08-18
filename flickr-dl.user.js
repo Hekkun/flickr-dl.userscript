@@ -1,16 +1,18 @@
 // ==UserScript==
-// @name         Flickr Downloader Enhanced
-// @namespace    https://github.com/Hekkun/flickr-dl.userscript
-// @version      0.3.0
-// @description  A userscript for downloading Flickr photos.
-// @author       f2face, Hekkun
-// @match        https://www.flickr.com/*
-// @grant	 	 GM_xmlhttpRequest
-// @require      https://cdn.rawgit.com/uzairfarooq/arrive/v2.4.1/minified/arrive.min.js
-// @require      http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js
-// @updateURL	 https://github.com/Hekkun/flickr-dl.userscript/raw/master/flickr-dl.user.js
-// @donwloadURL  https://github.com/Hekkun/flickr-dl.userscript/raw/master/flickr-dl.user.js
+// @name        	Flickr Downloader Enhanced
+// @namespace   	https://github.com/Hekkun/flickr-dl.userscript
+// @version     	0.3.0
+// @description 	A userscript for downloading Flickr photos.
+// @author      	f2face, Hekkun
+// @match       	https://www.flickr.com/*
+// @grant		GM_xmlhttpRequest
+// @require     	https://cdn.rawgit.com/uzairfarooq/arrive/v2.4.1/minified/arrive.min.js
+// @require     	http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js
+// @updateURL		https://github.com/Hekkun/flickr-dl.userscript/raw/master/flickr-dl.user.js
+// @donwloadURL 	https://github.com/Hekkun/flickr-dl.userscript/raw/master/flickr-dl.user.js
+// @connect		flickr.com
 // ==/UserScript==
+
 (function() {
 	'use strict';
 
@@ -27,7 +29,6 @@
 		};
 	}
 	addJS_Node(null, null, xmlOpenIntercept); //-- Injects code
-
 
 	//--- This code listens for the right kind of message.
 	document.body.addEventListener("newAjaxStart", receiveAjaxMessage);
@@ -197,18 +198,19 @@
 		var event = jQuery.Event('download-all');
 
 		var zNode = document.createElement('div');
-		zNode.innerHTML = '<button id="myButton" type="button">' +
+		zNode.innerHTML = '<button id="dl-button" type="button">' +
 			'Download All</button>';
 		zNode.setAttribute('id', 'myContainer');
 		$('div.fluid-subnav').append(zNode);
 
 		//--- Activate the newly added button.
-		document.getElementById("myButton").addEventListener(
+		document.getElementById("dl-button").addEventListener(
 			"click", ButtonClickAction, false
 		);
 
 		function ButtonClickAction(zEvent) {
 			$('button.download-butt').trigger('download-all');
+            $('#dl-button').text("Ready for batch DL");
 		}
 	});
 })();
