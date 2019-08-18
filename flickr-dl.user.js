@@ -5,9 +5,11 @@
 // @description  A userscript for downloading Flickr photos.
 // @author       f2face, Hekkun
 // @match        https://www.flickr.com/*
-// @grant	     GM_xmlhttpRequest
+// @grant	 GM_xmlhttpRequest
 // @require      https://cdn.rawgit.com/uzairfarooq/arrive/v2.4.1/minified/arrive.min.js
-// @require     http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js
+// @require      http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js
+// @updateURL	 https://github.com/Hekkun/flickr-dl.userscript/raw/master/flickr-dl.user.js
+// @donwloadURL  https://github.com/Hekkun/flickr-dl.userscript/raw/master/flickr-dl.user.js
 // ==/UserScript==
 
 (function() {
