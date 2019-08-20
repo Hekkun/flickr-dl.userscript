@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        	Flickr Downloader Enhanced
 // @namespace   	https://github.com/Hekkun/flickr-dl.userscript
-// @version     	0.3.1
+// @version     	0.3.2
 // @description 	A userscript for downloading Flickr photos.
 // @author      	f2face, Hekkun
 // @match       	https://www.flickr.com/*
@@ -182,35 +182,50 @@
 		var a = document.createElement('a');
 		a.href = img;
 		a.text = img;
+        	a.className = 'fldl-us-link';
 		a.style.display = 'none';
 		$('#content').append(a);
 
 		console.log(img);
 	}
+    
+	function addDownloadAllButton(element) {
 
+        	// Arrive is used to capture navigations to new pages. We don't unbind this.
+		document.arrive(element, function() {
+			var event = jQuery.Event('download-all');
+			
+			// Remove pre-existing links from previous pages
+			$('.fldl-us-link').remove();
+
+			var zNode = document.createElement('div');
+			zNode.innerHTML = '<button id="dl-button" type="button">' +
+				'Download All</button>';
+			zNode.setAttribute('id', 'myContainer');
+			$(element).append(zNode);
+
+			//--- Activate the newly added button.
+			document.getElementById("dl-button").addEventListener(
+				"click", ButtonClickAction, false
+			);
+
+			function ButtonClickAction(zEvent) {
+				$('button.download-butt').trigger('download-all');
+				$('#dl-button').text("Ready for batch DL");
+			}
+		});
+	}
+    
 	// Add download button on photos grid
 	addDownloadButton('.photo-list-photo-interaction');
 
 	// Add download button on single photo page
 	addDownloadButton('.photo-page-scrappy-view');
 
-	$('document').ready(function() {
-		var event = jQuery.Event('download-all');
+	// Add download all button on navigation bar
+	addDownloadAllButton('.fluid-subnav');
 
-		var zNode = document.createElement('div');
-		zNode.innerHTML = '<button id="dl-button" type="button">' +
-			'Download All</button>';
-		zNode.setAttribute('id', 'myContainer');
-		$('div.fluid-subnav').append(zNode);
+	// Add download all button on album header
+	addDownloadAllButton('.album-engagement-view');
 
-		//--- Activate the newly added button.
-		document.getElementById("dl-button").addEventListener(
-			"click", ButtonClickAction, false
-		);
-
-		function ButtonClickAction(zEvent) {
-			$('button.download-butt').trigger('download-all');
-            $('#dl-button').text("Ready for batch DL");
-		}
-	});
 })();
