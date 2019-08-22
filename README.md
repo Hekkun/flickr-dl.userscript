@@ -1,5 +1,6 @@
-# flickr-dl.userscript
+# flickr-dl.userscript Enhanced
 A userscript for downloading Flickr photos.
+Original [script](https://github.com/f2face/flickr-dl.userscript) by f2face
 
 ## Usage
 Click the **Download** buttons to instantly trigger single image downloads.
@@ -14,3 +15,6 @@ At this point, you need to use a third-party tool such as this [addon](https://a
 
 ## Installation 
 [![Install Now](https://img.shields.io/badge/install-latest-green.svg)](https://github.com/Hekkun/flickr-dl.userscript/raw/master/flickr-dl.user.js)
+
+## Compatibility
+Tested only on Firefox with Tampermonkey extension. Your mileage may vary on other combinations.
