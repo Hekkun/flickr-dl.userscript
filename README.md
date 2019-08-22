@@ -1,6 +1,7 @@
 # flickr-dl.userscript Enhanced
-A userscript for downloading Flickr photos.
-Original [script](https://github.com/f2face/flickr-dl.userscript) by f2face
+A userscript for downloading Flickr photos. Enhanced version.
+
+(Original [script](https://github.com/f2face/flickr-dl.userscript) by f2face)
 
 ## Usage
 Click the **Download** buttons to instantly trigger single image downloads.
