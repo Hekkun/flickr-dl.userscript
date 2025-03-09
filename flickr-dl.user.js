@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        	Flickr Downloader Enhanced
 // @namespace   	https://github.com/Hekkun/flickr-dl.userscript
-// @version     	0.3.3
+// @version     	0.3.4
 // @description 	A userscript for downloading Flickr photos.
 // @author      	f2face, Hekkun
 // @match       	https://www.flickr.com/*
@@ -192,22 +192,16 @@
         	a.className = 'fldl-us-link';
 		a.style.display = 'none';
 		$('#content').append(a);
-		
-		setTimeout(() => {
-			if (isFirefox())
-				a.dispatchEvent(new MouseEvent('click'));
-			else
-				a.click();	
-		}, 100);
+
 		console.log(img);
 	}
-    
+
 	function addDownloadAllButton(element) {
 
         	// Arrive is used to capture navigations to new pages. We don't unbind this.
 		document.arrive(element, function() {
 			var event = jQuery.Event('download-all');
-			
+
 			// Remove pre-existing links from previous pages
 			$('.fldl-us-link').remove();
 
@@ -228,7 +222,7 @@
 			}
 		});
 	}
-    
+
 	// Add download button on photos grid
 	addDownloadButton('.photo-list-photo-interaction');
 
@@ -240,9 +234,9 @@
 
 	// Add download all button on album header
 	addDownloadAllButton('.album-engagement-view');
-	
+
 	// For managing albums
     addDownloadButton('.photo-card-view');
-	addDownloadAllButton('.album-header-view');
+	addDownloadAllButton('.action-bar-content');
 
 })();
