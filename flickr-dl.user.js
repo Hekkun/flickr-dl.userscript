@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        	Flickr Downloader Enhanced
 // @namespace   	https://github.com/Hekkun/flickr-dl.userscript
-// @version     	0.3.2
+// @version     	0.3.3
 // @description 	A userscript for downloading Flickr photos.
 // @author      	f2face, Hekkun
 // @match       	https://www.flickr.com/*
@@ -61,12 +61,19 @@
 			var dlbtn = dlbar.getElementsByTagName('button')[0];
 			var photo_url = window.location.href;
 			var interaction_bar = el.getElementsByClassName('interaction-bar');
+			var album_content = el.getElementsByClassName('photo-card-content');
 			if (interaction_bar.length > 0) {
 				dlbar.style.position = 'absolute';
 				dlbar.style.top = '-60px';
 				dlbar.style.right = '10px';
 				interaction_bar[0].appendChild(dlbar);
 				photo_url = el.getElementsByClassName('overlay')[0].getAttribute('href');
+			} else if (album_content.length > 0) {
+				dlbar.style.position = 'absolute';
+				dlbar.style.top = '60px';
+				dlbar.style.right = '10px';
+				album_content[0].appendChild(dlbar);
+				photo_url = el.getElementsByClassName('photo-link')[0].getAttribute('href');
 			} else {
 				dlbar.style.marginBottom = '10px';
 				dlbar.style.paddingBottom = '10px';
@@ -185,7 +192,13 @@
         	a.className = 'fldl-us-link';
 		a.style.display = 'none';
 		$('#content').append(a);
-
+		
+		setTimeout(() => {
+			if (isFirefox())
+				a.dispatchEvent(new MouseEvent('click'));
+			else
+				a.click();	
+		}, 100);
 		console.log(img);
 	}
     
@@ -227,5 +240,9 @@
 
 	// Add download all button on album header
 	addDownloadAllButton('.album-engagement-view');
+	
+	// For managing albums
+    addDownloadButton('.photo-card-view');
+	addDownloadAllButton('.album-header-view');
 
 })();
